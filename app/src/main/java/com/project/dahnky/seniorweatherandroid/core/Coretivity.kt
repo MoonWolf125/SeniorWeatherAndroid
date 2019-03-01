@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import dagger.android.support.DaggerAppCompatActivity
 
-abstract class CoreActivity : DaggerAppCompatActivity(), ICoreView {
+abstract class Coretivity : DaggerAppCompatActivity(), ICore {
 
     override fun startFragment(@IdRes container: Int, fragment: Fragment, addToBackStack: Boolean) {
         if (supportFragmentManager.findFragmentById(container) != null)
@@ -27,7 +27,7 @@ abstract class CoreActivity : DaggerAppCompatActivity(), ICoreView {
             apply { finish() }
     }
 
-    override fun displayDialog(title: String, content: String, enableRetry: Boolean) {
+    override fun displayDialog(title: String, content: String) {
         MaterialDialog(this).show {
             title(text = title)
             message(text = content)
