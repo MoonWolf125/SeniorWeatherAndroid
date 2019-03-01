@@ -27,9 +27,9 @@ abstract class CoreActivity : DaggerAppCompatActivity(), ICoreView {
             apply { finish() }
     }
 
-    override fun displayErrorDialog(content: String, enableRetry: Boolean) {
+    override fun displayDialog(title: String, content: String, enableRetry: Boolean) {
         MaterialDialog(this).show {
-            title(text = "Error")
+            title(text = title)
             message(text = content)
         }
     }
