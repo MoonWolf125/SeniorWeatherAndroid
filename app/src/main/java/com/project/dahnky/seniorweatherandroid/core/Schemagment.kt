@@ -2,7 +2,7 @@ package com.project.dahnky.seniorweatherandroid.core
 
 import android.support.v4.app.Fragment
 
-abstract class Coreagment<E: Schemasenter> : Fragment(), ICore {
+abstract class Schemagment<E: Schemasenter> : Fragment(), ICore {
 
     private lateinit var presenter: E
 
