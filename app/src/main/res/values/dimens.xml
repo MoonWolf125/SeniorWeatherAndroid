@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <dimen name="app_text_size_headline_1_material">96sp</dimen>
+    <dimen name="app_text_size_headline_2_material">60sp</dimen>
+    <dimen name="app_text_size_headline_3_material">48sp</dimen>
+    <dimen name="app_text_size_headline_4_material">34sp</dimen>
+    <dimen name="app_text_size_headline_5_material">24sp</dimen>
+    <dimen name="app_text_size_headline_6_material">20sp</dimen>
+    <dimen name="app_text_size_subtitle_1_material">16sp</dimen>
+    <dimen name="app_text_size_subtitle_2_material">14sp</dimen>
+    <dimen name="app_text_size_body_1_material">16sp</dimen>
+    <dimen name="app_text_size_body_2_material">14sp</dimen>
+    <dimen name="app_text_size_button_material">14sp</dimen>
+    <dimen name="app_text_size_caption_material">12sp</dimen>
+    <dimen name="app_text_size_overline_material">10sp</dimen>
+    <dimen name="app_whitespace_size_small_material">4dp</dimen>
+    <dimen name="app_whitespace_size_regular_material">8dp</dimen>
+    <dimen name="app_whitespace_size_medium_material">12dp</dimen>
+    <dimen name="app_whitespace_size_large_material">16dp</dimen>
 </resources>
