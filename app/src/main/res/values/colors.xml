@@ -18,4 +18,6 @@
     <color name="msum_black">#2D2926</color>
     <color name="msum_light_grey">#C4BFB6</color>
     <color name="msum_silver">#A8A9AE</color>
+
+    <color name="opaque_msum_white">#56FFFFFF</color>
 </resources>

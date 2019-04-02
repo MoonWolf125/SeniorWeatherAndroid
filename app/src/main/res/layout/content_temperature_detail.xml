@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/msum_red" >
+
+    <TextView
+        android:id="@+id/tv_date"
+        style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tuesday, April 16th, 2019" />
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_temperature"
+        app:layout_constraintTop_toTopOf="@id/tv_temperature"
+        tools:src="@drawable/ic_clear_day"
+        android:contentDescription="@string/weather_summary_icon" />
+
+    <TextView
+        android:id="@+id/tv_temperature"
+        style="@style/AppTheme.TextAppearance.AppCompat.Headline1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"
+        tools:text="-58°"/>
+
+    <TextView
+        android:id="@+id/tv_summary"
+        style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_temperature"
+        tools:text="Mostly Cloudy"/>
+
+    <TextView
+        android:id="@+id/tv_low_high"
+        style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/iv_precipitation"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_summary"
+        tools:text="58°/36°"/>
+
+    <ImageView
+        android:id="@+id/iv_precipitation"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_precipitation"
+        app:layout_constraintStart_toEndOf="@id/tv_low_high"
+        app:layout_constraintTop_toTopOf="@id/tv_low_high"
+        app:layout_constraintBottom_toBottomOf="@id/tv_low_high"
+        tools:src="@drawable/ic_raindrops"
+        android:contentDescription="@string/precipitation" />
+
+    <TextView
+        android:id="@+id/tv_precipitation"
+        style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_precipitation"
+        app:layout_constraintTop_toBottomOf="@id/tv_summary"
+        tools:text="0%"/>
+
+</android.support.constraint.ConstraintLayout>
