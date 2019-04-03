@@ -28,9 +28,9 @@ abstract class Coretivity : DaggerAppCompatActivity(), ICore {
     }
 
     override fun displayDialog(title: String, content: String) {
-        MaterialDialog(this).show {
-            title(text = title)
-            message(text = content)
-        }
+        MaterialDialog.Builder(this)
+            .title(title)
+            .content(content)
+            .build().show()
     }
 }
