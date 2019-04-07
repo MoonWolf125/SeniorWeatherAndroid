@@ -1,20 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.project.dahnky.seniorweatherandroid">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.project.dahnky.seniorweatherandroid">
 
     <application android:name=".SeniorWeatherAndroid"
         android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme">
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-        <activity android:name=".view.home.HomeActivity">
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".view.home.IHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 </manifest>

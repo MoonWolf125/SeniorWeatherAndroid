@@ -2,13 +2,13 @@ package com.project.dahnky.seniorweatherandroid.core
 
 import android.support.v4.app.Fragment
 
-abstract class Schemagment<E: Schemasenter> : Fragment(), ICore {
+abstract class CoreFragment<E: CorePresenter> : Fragment(), ICoreView {
 
     private lateinit var presenter: E
 
     // Kotlin Getters and Setters
-    private val coretivity: ICore
-        get() = context as ICore
+    private val coretivity: ICoreView
+        get() = context as ICoreView
 //        set(value) { context = value }
 
 

@@ -2,15 +2,15 @@ package com.project.dahnky.seniorweatherandroid.core
 
 import org.greenrobot.eventbus.EventBus
 
-abstract class Schemasenter {
+abstract class CorePresenter {
 
-    private lateinit var view: ICore
+    private lateinit var view: ICoreView
 
-    fun onResume() {
+    open fun onResume() {
         EventBus.getDefault().register(this)
     }
 
-    fun onPause() {
+    open fun onPause() {
         EventBus.getDefault().unregister(this)
     }
 

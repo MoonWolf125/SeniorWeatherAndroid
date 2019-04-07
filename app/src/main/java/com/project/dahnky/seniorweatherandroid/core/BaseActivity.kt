@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import dagger.android.support.DaggerAppCompatActivity
 
-abstract class Coretivity : DaggerAppCompatActivity(), ICore {
+abstract class BaseActivity : DaggerAppCompatActivity(), ICoreView {
 
     override fun startFragment(@IdRes container: Int, fragment: Fragment, addToBackStack: Boolean) {
         if (supportFragmentManager.findFragmentById(container) != null)

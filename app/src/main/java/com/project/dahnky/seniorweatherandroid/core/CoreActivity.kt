@@ -1,8 +1,10 @@
 package com.project.dahnky.seniorweatherandroid.core
 
-abstract class Schemativity<E: Schemasenter> : Coretivity() {
+import javax.inject.Inject
 
-    protected lateinit var presenter: E
+abstract class CoreActivity<E: CorePresenter> : BaseActivity() {
+
+    @Inject protected lateinit var presenter: E
 
     override fun onResume() {
         super.onResume()
