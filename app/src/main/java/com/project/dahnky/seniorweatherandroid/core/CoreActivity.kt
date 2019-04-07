@@ -1,5 +1,7 @@
 package com.project.dahnky.seniorweatherandroid.core
 
+import android.os.Bundle
+import android.os.PersistableBundle
 import javax.inject.Inject
 
 abstract class CoreActivity<E: CorePresenter> : BaseActivity() {
