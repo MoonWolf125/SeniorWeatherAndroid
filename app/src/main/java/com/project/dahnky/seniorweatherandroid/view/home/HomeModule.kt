@@ -1,13 +1,10 @@
 package com.project.dahnky.seniorweatherandroid.view.home
 
-import android.app.Activity
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 
 @Module
-class HomeModule(private var activity: Activity) {
-    @Provides
-    fun provideActivity(): Activity {
-        return activity
-    }
+abstract class HomeModule {
+    @Binds
+    abstract fun provideHomeActivity(homeActivity: HomeActivity): IHomeView
 }
