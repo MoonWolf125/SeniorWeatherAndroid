@@ -13,21 +13,14 @@
         android:id="@+id/drawer_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/include">
+        android:layout_below="@id/include"
+        android:animateLayoutChanges="true">
 
         <!-- the layout which will be the content of the activity (which will be hosted inside the drawer (NOT the list of the drawer)) -->
         <FrameLayout
             android:id="@+id/frame_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Test"
-                android:textSize="16sp" />
-        </FrameLayout>
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"/>
     </FrameLayout>
 </RelativeLayout>

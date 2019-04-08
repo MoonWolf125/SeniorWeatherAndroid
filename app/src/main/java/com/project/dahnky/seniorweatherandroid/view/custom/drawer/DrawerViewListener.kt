@@ -1,5 +1,11 @@
 package com.project.dahnky.seniorweatherandroid.view.custom.drawer
 
 interface DrawerViewListener {
-    fun onDrawerNavClick(string: String)
+    enum class DrawerSelection {
+        HOME,
+        EMBEDDED,
+        INFO
+    }
+
+    fun onDrawerNavClick(drawerSelection: DrawerSelection)
 }

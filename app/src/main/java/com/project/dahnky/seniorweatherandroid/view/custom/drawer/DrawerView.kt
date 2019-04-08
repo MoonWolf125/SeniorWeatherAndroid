@@ -18,8 +18,8 @@ class DrawerView @JvmOverloads constructor(context: Context,
     }
 
     fun setup(listener: DrawerViewListener) {
-        container_home.setOnClickListener { listener.onDrawerNavClick("home") }
-        container_embedded.setOnClickListener { listener.onDrawerNavClick("embedded") }
-        container_info.setOnClickListener { listener.onDrawerNavClick("info") }
+        container_home.setOnClickListener { listener.onDrawerNavClick(DrawerViewListener.DrawerSelection.HOME) }
+        container_embedded.setOnClickListener { listener.onDrawerNavClick(DrawerViewListener.DrawerSelection.EMBEDDED) }
+        container_info.setOnClickListener { listener.onDrawerNavClick(DrawerViewListener.DrawerSelection.INFO) }
     }
 }
