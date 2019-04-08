@@ -1,5 +1,5 @@
 package com.project.dahnky.seniorweatherandroid.model
 
-class GridPoints {
+class NWSGridPoints {
 
 }
