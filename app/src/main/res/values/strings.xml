@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SeniorWeatherAndroid</string>
+    <string name="app_name">SAC Weather</string>
     <string name="precipitation">Precipitation</string>
     <string name="weather_summary_icon">Weather Summary Icon</string>
     <string name="hourly">Hourly</string>
