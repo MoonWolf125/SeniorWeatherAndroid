@@ -9,7 +9,7 @@ abstract class BaseActivity : DaggerAppCompatActivity(), ICoreView {
 
     protected val permRequestCode = 13
 
-    override fun startFragment(container: Int, fragment: Fragment, addToBackStack: Boolean) {
+    override fun startFragment(@IdRes container: Int, fragment: Fragment, addToBackStack: Boolean) {
         supportFragmentManager.beginTransaction().apply {
             replace(container, fragment)
             if (addToBackStack)

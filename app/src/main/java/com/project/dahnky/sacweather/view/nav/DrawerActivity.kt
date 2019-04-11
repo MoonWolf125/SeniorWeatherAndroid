@@ -24,15 +24,10 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), permRequestCode)
-        }
-
-        startFragment(R.id.frame_container,
-            HomeFragment.newInstance(), false)
-        this.drawerSelection = DrawerViewListener.DrawerSelection.HOME
+        checkRequestPermissions()
         setupDrawer(savedInstanceState)
+        this.drawerSelection = DrawerViewListener.DrawerSelection.HOME
+        startFragment(R.id.frame_container, HomeFragment.newInstance(), false)
     }
 
     override fun onDrawerNavClick(drawerSelection: DrawerViewListener.DrawerSelection) {
@@ -65,7 +60,12 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
                 return
             }
         }
+    }
 
+    private fun checkRequestPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), permRequestCode)
+        }
     }
 
     private fun setupDrawer(savedInstanceState: Bundle?) {
