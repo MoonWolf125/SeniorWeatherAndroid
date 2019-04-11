@@ -1,6 +1,3 @@
-/*
-* Review: https://stackoverflow.com/questions/41002174/whats-the-best-way-to-check-for-permissions-at-runtime-using-mvp-architecture
-*/
 package com.project.dahnky.seniorweatherandroid.view.nav
 
 import android.os.Bundle
@@ -23,7 +20,8 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
-        startFragment(R.id.frame_container, HomeFragment.newInstance(), false)
+        startFragment(R.id.frame_container,
+            HomeFragment.newInstance(), false)
         this.drawerSelection = DrawerViewListener.DrawerSelection.HOME
         setupDrawer(savedInstanceState)
     }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.project.dahnky.seniorweatherandroid.R
 import com.project.dahnky.seniorweatherandroid.model.ResourceInformation
+import kotlinx.android.synthetic.main.view_resource_row.view.*
 
 class ResourceRowView @JvmOverloads constructor(context: Context,
                                                 attrs: AttributeSet? = null,
@@ -14,12 +15,14 @@ class ResourceRowView @JvmOverloads constructor(context: Context,
         if (attrs == null) {
             layoutParams = LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
-        inflate(context, R.layout.view_drawer, this)
+        inflate(context, R.layout.view_resource_row, this)
     }
-    fun setup(
-        get: ResourceInformation,
-        listener: ResourceRowListener
-    ) {
+    fun setup(resource: ResourceInformation, listener: ResourceRowListener) {
         // TODO
+        tv_title.text = resource.title
+        tv_description.text = resource.description
+        setOnLongClickListener {
+            listener.onOpenResourceLink(resource.link)
+        }
     }
 }

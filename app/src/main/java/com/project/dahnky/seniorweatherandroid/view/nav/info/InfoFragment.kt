@@ -1,6 +1,8 @@
 package com.project.dahnky.seniorweatherandroid.view.nav.info
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -21,7 +23,6 @@ class InfoFragment : CoreFragment<InfoPresenter>(), IInfoView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.start()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,9 +42,12 @@ class InfoFragment : CoreFragment<InfoPresenter>(), IInfoView {
     override fun setResources(resources: List<ResourceInformation>) {
         rv_resources.adapter = ResourcesAdapter(presenter, resources)
     }
+    override fun openResourceLink(link: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
+    }
 
     private fun setupView() {
         rv_resources.layoutManager = LinearLayoutManager(activity)
-        presenter.start()
+        presenter.start(context!!.assets)
     }
 }

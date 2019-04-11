@@ -5,4 +5,5 @@ import com.project.dahnky.seniorweatherandroid.model.ResourceInformation
 
 interface IInfoView : ICoreView {
     fun setResources(resources: List<ResourceInformation>)
+    fun openResourceLink(link: String)
 }

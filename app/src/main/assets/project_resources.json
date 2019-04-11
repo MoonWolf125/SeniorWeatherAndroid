@@ -1,0 +1,32 @@
+{"resources": [
+  {
+    "title": "Kotlin",
+    "description": "Kotlin is a new programming language designed and developed by Jetbrains and open-source contributors. Kotlin is the language used to develop this application.",
+    "link": "https://kotlinlang.org/"
+  },
+  {
+    "title": "Android Studio",
+    "description": "The official integrated development environment for the Android operating system, built on JetBrains' IntelliJ IDEA software and designed for Android development",
+    "link": "https://developer.android.com/studio"
+  },
+  {
+    "title": "Material Design",
+    "description": "Material is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. This application follows these guidelines.",
+    "link": "https://material.io/"
+  },
+  {
+    "title": "Gradle",
+    "description": "Gradle is an open-source automation tool that provides flexibility and performance for multi and single language development. Gradle is supported and used in Android studio for a consistent, swift, but highly customizable build process.",
+    "link": "https://gradle.org/"
+  },
+  {
+    "title": "Git",
+    "description": "Git is a version control system. Using version control allows developers to create snapshots of their code. These snapshots can be used to revert, add, or stash changes without losing previous changes. Also using Git allows developers to branch and enhance, maintain, and fix code without updating the release version.",
+    "link": "https://git-scm.com/"
+  },
+  {
+    "title": "GitHub",
+    "description": "GitHub is a website focused as a Distributed Version Control System for Git. GitHub allows users to host a repository and thus the source code for projects. GitHub offers extensive control over administration and repository control.",
+    "link": "https://github.com/"
+  }
+]}

@@ -11,4 +11,6 @@
     <string name="my_name">Kyle Dahn</string>
     <string name="my_major">Computer Science</string>
     <string name="school_year">Minnesota State University\nMoorhead\n2019</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="kotlin_text">Kotlin is a new programming language designed and developed by Jetbrains and open-source contributors. Kotlin is the language used to develop this application.</string>
 </resources>
