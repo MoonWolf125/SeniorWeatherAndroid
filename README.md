@@ -1,4 +1,4 @@
 SAC Weather
 -----------
 
-![Poster](/blob:null/0d39f785-7bad-4677-a79b-ca0ebd68a292)
+![Poster](https://raw.githubusercontent.com/MoonWolf125/SeniorWeatherAndroid/617ed5eb3a53bd8be11431385a41c2d03c7b5102/SACKyleDahnRED48x36.pdf)
