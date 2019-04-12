@@ -13,10 +13,10 @@ data class NWSForeHourlyProperties(
     val updateTime: String?,
     val validTimes: String?,
     val elevation: NWSValueUnit?,
-    val periods: List<NWSForeHourlyPeriod>
+    val periods: List<NWSForecastPeriod>
 )
 
-data class NWSForeHourlyPeriod(
+data class NWSForecastPeriod(
     val number: Int?,
     val name: String?,
     val startTime: String?,

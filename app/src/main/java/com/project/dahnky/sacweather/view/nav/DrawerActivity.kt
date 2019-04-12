@@ -37,9 +37,9 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
                 DrawerViewListener.DrawerSelection.HOME -> {
                     startFragment(R.id.frame_container, HomeFragment.newInstance(this), false)
                 }
-                DrawerViewListener.DrawerSelection.EMBEDDED -> {
-                    Toast.makeText(this, "Embedded", Toast.LENGTH_LONG).show()
-                }
+//                DrawerViewListener.DrawerSelection.EMBEDDED -> {
+//                    Toast.makeText(this, "Embedded", Toast.LENGTH_LONG).show()
+//                }
                 DrawerViewListener.DrawerSelection.INFO -> {
                     startFragment(R.id.frame_container, InfoFragment.newInstance(), false)
                     toolbar.title = "Information"

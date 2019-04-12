@@ -10,11 +10,12 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.project.dahnky.sacweather.R
 import com.project.dahnky.sacweather.core.CoreFragment
-import com.project.dahnky.sacweather.model.NWSForeHourlyPeriod
+import com.project.dahnky.sacweather.model.NWSForecastPeriod
 import com.project.dahnky.sacweather.view.adapters.ForecastAdapter
+import com.project.dahnky.sacweather.view.custom.ForecastSelection
+import com.project.dahnky.sacweather.view.custom.ForecastSelection.*
 import com.project.dahnky.sacweather.view.custom.SummaryIcon
 import com.project.dahnky.sacweather.view.custom.drawer.DrawerViewListener
-import com.project.dahnky.sacweather.view.nav.home.IHomeView.Companion.ForecastSelection.*
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.content_temperature_detail.*
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
 
     private lateinit var listener: DrawerViewListener
+    private lateinit var forecastSelection: ForecastSelection
 
     companion object {
         fun newInstance(listener: DrawerViewListener) = HomeFragment().apply {
@@ -40,25 +42,9 @@ class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.start()
-        swipe_refresh.setOnRefreshListener { presenter.refresh() }
-        rv_forecasts.layoutManager = LinearLayoutManager(activity)
-        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                // no-op
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                // no-op
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab!!.position) {
-                    0 -> presenter.getForecasts(HOURLY)
-                    1 -> presenter.getForecasts(DAILY)
-                }
-            }
-        })
+        forecastSelection = HOURLY
+        presenter.start(forecastSelection)
+        setupView()
     }
 
     override fun onAttach(context: Context?) {
@@ -81,7 +67,7 @@ class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
         tv_date.text = dateString
     }
 
-    override fun setCurrentForecast(forecast: NWSForeHourlyPeriod?) {
+    override fun setCurrentForecast(forecast: NWSForecastPeriod?) {
         if (forecast != null) {
             if (forecast.temperature >= 0) {
                 tv_negative.visibility = View.GONE
@@ -96,8 +82,8 @@ class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
         }
     }
 
-    override fun setHourlyForecasts(forecasts: List<NWSForeHourlyPeriod>): Boolean {
-        rv_forecasts.adapter = ForecastAdapter(forecasts)
+    override fun setForecasts(forecasts: List<NWSForecastPeriod>, forecastSelection: ForecastSelection): Boolean {
+        rv_forecasts.adapter = ForecastAdapter(forecasts, forecastSelection)
         return true
     }
 
@@ -109,5 +95,36 @@ class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
             SummaryIcon.CLOUD -> Glide.with(this).load(R.drawable.ic_cloudy).into(iv_summary_icon)
             SummaryIcon.CLEAR -> Glide.with(this).load(R.drawable.ic_clear_day).into(iv_summary_icon)
         }
+    }
+
+    private fun setupView() {
+        swipe_refresh.setOnRefreshListener { presenter.refresh(forecastSelection) }
+        rv_forecasts.layoutManager = LinearLayoutManager(activity)
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                // no-op
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // no-op
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> {
+                        if (forecastSelection != HOURLY) {
+                            forecastSelection = HOURLY
+                            presenter.start(HOURLY)
+                        }
+                    }
+                    1 -> {
+                        if (forecastSelection != DAILY) {
+                            forecastSelection = DAILY
+                            presenter.start(DAILY)
+                        }
+                    }
+                }
+            }
+        })
     }
 }

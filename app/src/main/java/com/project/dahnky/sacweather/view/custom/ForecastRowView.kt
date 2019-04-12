@@ -1,7 +1,6 @@
 package com.project.dahnky.sacweather.view.custom
 
 import android.content.Context
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
@@ -9,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.bumptech.glide.Glide
 import com.project.dahnky.sacweather.R
-import com.project.dahnky.sacweather.model.NWSForeHourlyPeriod
+import com.project.dahnky.sacweather.model.NWSForecastPeriod
+import com.project.dahnky.sacweather.view.custom.ForecastSelection.*
 import kotlinx.android.synthetic.main.view_forecast_row.view.*
 import org.threeten.bp.ZoneId
 import org.threeten.bp.ZonedDateTime
@@ -26,15 +26,30 @@ class ForecastRowView @JvmOverloads constructor(context: Context,
         inflate(context, R.layout.view_forecast_row, this)
     }
 
-    fun setup(forecast: NWSForeHourlyPeriod) {
-        tv_title.text = ZonedDateTime.parse(forecast.startTime).format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault()))
-        tv_temperature.text = "${forecast.temperature}°"
-        when {
-            forecast.shortForecast!!.contains(SummaryIcon.SNOW.title) -> setIcon(SummaryIcon.SNOW)
-            forecast.shortForecast.contains(SummaryIcon.RAIN.title) -> setIcon(SummaryIcon.RAIN)
-            forecast.shortForecast.contains(SummaryIcon.SUN.title) -> setIcon(SummaryIcon.SUN)
-            forecast.shortForecast.contains(SummaryIcon.CLOUD.title) -> setIcon(SummaryIcon.CLOUD)
-            forecast.shortForecast.contains(SummaryIcon.CLEAR.title) -> setIcon(SummaryIcon.CLEAR)
+    fun setup(forecast: NWSForecastPeriod, forecastSelection: ForecastSelection) {
+        when (forecastSelection) {
+            HOURLY -> {
+                tv_title.text = ZonedDateTime.parse(forecast.startTime).format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault()))
+                tv_temperature.text = "${forecast.temperature}°"
+                when {
+                    forecast.shortForecast!!.contains(SummaryIcon.SNOW.title) -> setIcon(SummaryIcon.SNOW)
+                    forecast.shortForecast.contains(SummaryIcon.RAIN.title) -> setIcon(SummaryIcon.RAIN)
+                    forecast.shortForecast.contains(SummaryIcon.SUN.title) -> setIcon(SummaryIcon.SUN)
+                    forecast.shortForecast.contains(SummaryIcon.CLOUD.title) -> setIcon(SummaryIcon.CLOUD)
+                    forecast.shortForecast.contains(SummaryIcon.CLEAR.title) -> setIcon(SummaryIcon.CLEAR)
+                }
+            }
+            DAILY -> {
+                tv_title.text = ZonedDateTime.parse(forecast.startTime).format(DateTimeFormatter.ofPattern("eee, MMM d, h a").withZone(ZoneId.systemDefault()))
+                tv_temperature.text = "${forecast.temperature}°"
+                when {
+                    forecast.shortForecast!!.contains(SummaryIcon.SNOW.title) -> setIcon(SummaryIcon.SNOW)
+                    forecast.shortForecast.contains(SummaryIcon.RAIN.title) -> setIcon(SummaryIcon.RAIN)
+                    forecast.shortForecast.contains(SummaryIcon.SUN.title) -> setIcon(SummaryIcon.SUN)
+                    forecast.shortForecast.contains(SummaryIcon.CLOUD.title) -> setIcon(SummaryIcon.CLOUD)
+                    forecast.shortForecast.contains(SummaryIcon.CLEAR.title) -> setIcon(SummaryIcon.CLEAR)
+                }
+            }
         }
     }
 

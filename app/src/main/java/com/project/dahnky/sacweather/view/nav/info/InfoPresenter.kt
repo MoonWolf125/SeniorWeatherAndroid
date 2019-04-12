@@ -28,7 +28,6 @@ class InfoPresenter @Inject constructor(val view: IInfoView) : CorePresenter(), 
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     fun onEventReceived(event: ResourcesEvent) {
-        // TODO event has been received
         EventBus.getDefault().removeStickyEvent(event::class.java)
 //        view.setResources(event.resources)
     }
