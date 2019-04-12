@@ -1,4 +1,4 @@
 SAC Weather
 -----------
 
-![Poster](SACKyleDahnRED48x36.pdf)
+![Alt text](SACKyleDahnRED48x36.pdf)
