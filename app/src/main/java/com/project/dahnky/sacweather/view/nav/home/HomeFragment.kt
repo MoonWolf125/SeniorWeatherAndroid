@@ -2,6 +2,7 @@ package com.project.dahnky.sacweather.view.nav.home
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.project.dahnky.sacweather.model.NWSForeHourlyPeriod
 import com.project.dahnky.sacweather.view.adapters.ForecastAdapter
 import com.project.dahnky.sacweather.view.custom.SummaryIcon
 import com.project.dahnky.sacweather.view.custom.drawer.DrawerViewListener
+import com.project.dahnky.sacweather.view.nav.home.IHomeView.Companion.ForecastSelection.*
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.content_temperature_detail.*
@@ -41,6 +43,22 @@ class HomeFragment : CoreFragment<HomePresenter>(), IHomeView {
         presenter.start()
         swipe_refresh.setOnRefreshListener { presenter.refresh() }
         rv_forecasts.layoutManager = LinearLayoutManager(activity)
+        tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                // no-op
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // no-op
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position) {
+                    0 -> presenter.getForecasts(HOURLY)
+                    1 -> presenter.getForecasts(DAILY)
+                }
+            }
+        })
     }
 
     override fun onAttach(context: Context?) {

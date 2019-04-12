@@ -5,6 +5,12 @@ import com.project.dahnky.sacweather.model.NWSForeHourlyPeriod
 import com.project.dahnky.sacweather.view.custom.SummaryIcon
 
 interface IHomeView: ICoreView {
+    companion object {
+        enum class ForecastSelection {
+            HOURLY,
+            DAILY
+        }
+    }
 
     fun showProgress()
     fun hideProgress()

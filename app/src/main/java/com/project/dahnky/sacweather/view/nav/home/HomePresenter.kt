@@ -6,6 +6,9 @@ import com.project.dahnky.sacweather.model.events.NWSForecaseHourlyEvent
 import com.project.dahnky.sacweather.model.events.NWSPointsEvent
 import com.project.dahnky.sacweather.service.HomeService
 import com.project.dahnky.sacweather.view.custom.SummaryIcon.*
+import com.project.dahnky.sacweather.view.nav.home.IHomeView.Companion.ForecastSelection
+import com.project.dahnky.sacweather.view.nav.home.IHomeView.Companion.ForecastSelection.DAILY
+import com.project.dahnky.sacweather.view.nav.home.IHomeView.Companion.ForecastSelection.HOURLY
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -19,8 +22,6 @@ class HomePresenter @Inject constructor(val view: IHomeView,
                                         val service: HomeService): CorePresenter() {
 
     fun start() {
-        // TODO start
-        val today = ZonedDateTime.now()
         view.showProgress()
         service.getHourlyForecast()
     }
@@ -31,6 +32,13 @@ class HomePresenter @Inject constructor(val view: IHomeView,
 
     override fun finish() {
         // service.cancelCall()
+    }
+
+    fun getForecasts(forecastSelection: ForecastSelection) {
+        when (forecastSelection) {
+            HOURLY -> service.getHourlyForecast()
+            DAILY -> service.getDailyForecast()
+        }
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
