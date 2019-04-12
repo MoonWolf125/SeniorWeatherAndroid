@@ -1,6 +1,8 @@
 package com.project.dahnky.sacweather.view.nav.home
 
+import android.util.Log
 import com.project.dahnky.sacweather.core.CorePresenter
+import com.project.dahnky.sacweather.model.events.NWSForecaseHourlyEvent
 import com.project.dahnky.sacweather.service.HomeService
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -13,6 +15,11 @@ class HomePresenter @Inject constructor(val view: IHomeView,
     fun start() {
         // TODO start
         val today = ZonedDateTime.now()
+        view.showProgress()
+        service.getHourlyForecast()
+    }
+
+    fun refresh() {
         service.getHourlyForecast()
     }
 
@@ -21,7 +28,9 @@ class HomePresenter @Inject constructor(val view: IHomeView,
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    fun onEventReceived(event: Any) {
+    fun onEventReceived(event: NWSForecaseHourlyEvent) {
         // TODO event has been received
+        view.hideProgress()
+        Log.i("onEventReceived", event.toString())
     }
 }

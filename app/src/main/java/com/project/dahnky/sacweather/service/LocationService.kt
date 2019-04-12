@@ -12,9 +12,10 @@ import com.google.android.gms.location.LocationServices
 import com.project.dahnky.sacweather.model.NWSGridPointsForecastHourly
 import com.project.dahnky.sacweather.model.NWSPointsResponse
 import com.project.dahnky.sacweather.model.events.NWSForecaseHourlyEvent
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import retrofit2.Response
-import kotlin.coroutines.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,7 +35,7 @@ class HomeService @Inject constructor(private val context: Context, private val 
             LocationServices.getFusedLocationProviderClient(context).requestLocationUpdates(locationRequest, this, null)
         } else {
             // call getNWS stuff here but using the static MSUM Lat/Long
-            weatherService.getNWSGridpointsForecastHourly((46.867758).toString(), (-96.758283).toString())
+            GlobalScope.launch { weatherService.getNWSGridpointsForecastHourly("46.867758", "-96.758283") }
         }
     }
 
@@ -52,7 +53,7 @@ class HomeService @Inject constructor(private val context: Context, private val 
         super.onLocationResult(result)
         if (result?.lastLocation != null) {
             when (weatherRequest) {
-                WeatherRequest.Hourly -> weatherService.getNWSGridpointsForecastHourly(result.lastLocation.latitude.toString(), result.lastLocation.longitude.toString())
+                WeatherRequest.Hourly -> GlobalScope.launch { weatherService.getNWSGridpointsForecastHourly(result.lastLocation.latitude.toString(), result.lastLocation.longitude.toString()) }
                 WeatherRequest.Daily -> TODO()
             }
             Log.i("onLocationResult", "Latitude: ${result.lastLocation.latitude}, Longitude: ${result.lastLocation.longitude}")
@@ -67,6 +68,7 @@ class WeatherService @Inject constructor(private val apiService: WeatherApiServi
         if (points != null) {
             val res: Response<NWSGridPointsForecastHourly> = apiService.getNWSGridpointsForecastHourly(points.properties?.cwa!!, points.properties.gridX, points.properties.gridY).execute()
             if (res.isSuccessful) {
+                Log.i("getNWSGridForeHourly", res.body().toString())
                 EventBus.getDefault().postSticky(NWSForecaseHourlyEvent(res.body()!!, isSuccess = true))
             } else {
                 EventBus.getDefault().postSticky(NWSForecaseHourlyEvent(isSuccess = false, error = res.message()))
@@ -74,9 +76,10 @@ class WeatherService @Inject constructor(private val apiService: WeatherApiServi
         }
     }
 
-    private fun getNWSPoints(latitude: String, longitude: String): NWSPointsResponse? {
+    fun getNWSPoints(latitude: String, longitude: String): NWSPointsResponse? {
         val res: Response<NWSPointsResponse> = apiService.getNWSPoints(latitude, longitude).execute()
         if (res.isSuccessful) {
+            Log.i("getNWSPoints", res.body().toString())
             return res.body()!!
         }
         return null

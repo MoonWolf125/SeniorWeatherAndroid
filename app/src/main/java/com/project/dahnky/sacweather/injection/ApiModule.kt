@@ -30,7 +30,7 @@ class ApiModule {
     @Singleton
     fun provideGson(): Gson {
         return GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+            .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
             .serializeNulls()
             .create()
     }
