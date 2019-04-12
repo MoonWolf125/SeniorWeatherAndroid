@@ -1,4 +1,4 @@
 SAC Weather
 -----------
 
-![Poster](/documentation/SACKyleDahnRED48x36.png)
+![Poster](https://github.com/MoonWolf125/SeniorWeatherAndroid/blob/HomeFragment/documentation/SACKyleDahnRED48x36.PNG?raw=true)
