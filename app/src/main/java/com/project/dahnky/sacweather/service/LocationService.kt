@@ -12,6 +12,7 @@ import com.google.android.gms.location.LocationServices
 import com.project.dahnky.sacweather.model.NWSGridPointsForecastHourly
 import com.project.dahnky.sacweather.model.NWSPointsResponse
 import com.project.dahnky.sacweather.model.events.NWSForecaseHourlyEvent
+import com.project.dahnky.sacweather.model.events.NWSPointsEvent
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
@@ -30,6 +31,8 @@ class HomeService @Inject constructor(private val context: Context, private val 
 
     fun getHourlyForecast() {
         val locationRequest = LocationRequest()
+        locationRequest.numUpdates = 1
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         weatherRequest = WeatherRequest.Hourly
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             LocationServices.getFusedLocationProviderClient(context).requestLocationUpdates(locationRequest, this, null)
@@ -80,7 +83,10 @@ class WeatherService @Inject constructor(private val apiService: WeatherApiServi
         val res: Response<NWSPointsResponse> = apiService.getNWSPoints(latitude, longitude).execute()
         if (res.isSuccessful) {
             Log.i("getNWSPoints", res.body().toString())
+            EventBus.getDefault().postSticky(NWSPointsEvent(res.body()!!, isSuccess = true))
             return res.body()!!
+        } else {
+            EventBus.getDefault().postSticky(NWSPointsEvent(isSuccess = false, error = res.message()))
         }
         return null
     }

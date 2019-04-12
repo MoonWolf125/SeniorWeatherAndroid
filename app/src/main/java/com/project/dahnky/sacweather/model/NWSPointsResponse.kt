@@ -3,13 +3,7 @@ package com.project.dahnky.sacweather.model
 data class NWSPointsResponse(
     val id: String?,
     val type: String?,
-    val geometry: NWSGeometry?,
     val properties: NWSProperties?
-)
-
-data class NWSGeometry(
-    val type: String?,
-    val coordinates: List<Float>
 )
 data class NWSProperties(
     val cwa: String?,
@@ -29,7 +23,6 @@ data class NWSProperties(
 
 data class NWSRelativeLocation(
     val type: String?,
-    val geometry: NWSGeometry?,
     val properties: NWSLocationProperties?
 )
 

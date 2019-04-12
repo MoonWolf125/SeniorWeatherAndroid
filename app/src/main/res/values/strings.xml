@@ -13,4 +13,6 @@
     <string name="school_year">Minnesota State University\nMoorhead\n2019</string>
     <string name="kotlin">Kotlin</string>
     <string name="kotlin_text">Kotlin is a new programming language designed and developed by Jetbrains and open-source contributors. Kotlin is the language used to develop this application.</string>
+    <string name="degree">°</string>
+    <string name="a_representative_icon_for_this_forecast">A representative icon for this forecast</string>
 </resources>

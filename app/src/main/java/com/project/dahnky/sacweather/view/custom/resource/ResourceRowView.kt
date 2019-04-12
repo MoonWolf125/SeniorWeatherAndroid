@@ -17,6 +17,7 @@ class ResourceRowView @JvmOverloads constructor(context: Context,
         }
         inflate(context, R.layout.view_resource_row, this)
     }
+
     fun setup(resource: ResourceInformation, listener: ResourceRowListener) {
         tv_title.text = resource.title
         tv_description.text = resource.description

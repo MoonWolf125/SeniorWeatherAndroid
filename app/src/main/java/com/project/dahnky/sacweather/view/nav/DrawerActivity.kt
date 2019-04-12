@@ -27,7 +27,7 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
         checkRequestPermissions()
         setupDrawer(savedInstanceState)
         this.drawerSelection = DrawerViewListener.DrawerSelection.HOME
-        startFragment(R.id.frame_container, HomeFragment.newInstance(), false)
+        startFragment(R.id.frame_container, HomeFragment.newInstance(this), false)
     }
 
     override fun onDrawerNavClick(drawerSelection: DrawerViewListener.DrawerSelection) {
@@ -35,7 +35,7 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
             this.drawerSelection = drawerSelection
             when (drawerSelection) {
                 DrawerViewListener.DrawerSelection.HOME -> {
-                    startFragment(R.id.frame_container, HomeFragment.newInstance(), false)
+                    startFragment(R.id.frame_container, HomeFragment.newInstance(this), false)
                 }
                 DrawerViewListener.DrawerSelection.EMBEDDED -> {
                     Toast.makeText(this, "Embedded", Toast.LENGTH_LONG).show()
@@ -49,13 +49,17 @@ class DrawerActivity : BaseActivity(), DrawerViewListener {
         }
     }
 
+    override fun setToolbarTitle(title: String) {
+        toolbar.title = title
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             permRequestCode -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    startFragment(R.id.frame_container, HomeFragment.newInstance(), false)
+                    startFragment(R.id.frame_container, HomeFragment.newInstance(this), false)
                 }
                 return
             }

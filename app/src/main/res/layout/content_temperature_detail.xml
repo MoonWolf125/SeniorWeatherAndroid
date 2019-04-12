@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/msum_red"
     android:paddingBottom="12dp">
 
@@ -21,13 +21,25 @@
         tools:text="Tuesday, April 16th, 2019" />
 
     <ImageView
+        android:id="@+id/iv_summary_icon"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="8dp"
+        android:contentDescription="@string/weather_summary_icon"
+        app:layout_constraintEnd_toStartOf="@id/tv_negative"
+        app:layout_constraintTop_toTopOf="@id/tv_temperature"
+        tools:src="@drawable/ic_clear_day" />
+
+    <TextView
+        android:id="@+id/tv_negative"
+        style="@style/AppTheme.TextAppearance.AppCompat.Headline1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/tv_temperature"
         app:layout_constraintTop_toTopOf="@id/tv_temperature"
-        tools:src="@drawable/ic_clear_day"
-        android:contentDescription="@string/weather_summary_icon" />
+        tools:text="-"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/tv_temperature"
@@ -37,7 +49,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_date"
-        tools:text="-58°"/>
+        tools:text="58"/>
+
+    <TextView
+        android:id="@+id/tv_degree"
+        style="@style/AppTheme.TextAppearance.AppCompat.Headline1.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/degree"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/tv_temperature"
+        app:layout_constraintTop_toTopOf="@id/tv_temperature"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/tv_summary"
@@ -50,37 +73,13 @@
         tools:text="Mostly Cloudy"/>
 
     <TextView
-        android:id="@+id/tv_low_high"
-        style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/iv_precipitation"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_summary"
-        tools:text="58°/36°"/>
-
-    <ImageView
-        android:id="@+id/iv_precipitation"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toStartOf="@id/tv_precipitation"
-        app:layout_constraintStart_toEndOf="@id/tv_low_high"
-        app:layout_constraintTop_toTopOf="@id/tv_low_high"
-        app:layout_constraintBottom_toBottomOf="@id/tv_low_high"
-        tools:src="@drawable/ic_raindrops"
-        android:contentDescription="@string/precipitation" />
-
-    <TextView
-        android:id="@+id/tv_precipitation"
+        android:id="@+id/tv_wind"
         style="@style/AppTheme.TextAppearance.AppCompat.Body1.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_precipitation"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_summary"
-        tools:text="0%"/>
-
+        tools:text="21 mph NNE"/>
 </android.support.constraint.ConstraintLayout>

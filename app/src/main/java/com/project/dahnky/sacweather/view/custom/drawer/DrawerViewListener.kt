@@ -8,4 +8,6 @@ interface DrawerViewListener {
     }
 
     fun onDrawerNavClick(drawerSelection: DrawerSelection)
+
+    fun setToolbarTitle(title: String)
 }
