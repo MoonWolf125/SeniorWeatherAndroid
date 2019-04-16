@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">SeniorWeatherAndroid</string>
+    <string name="app_name">SAC Weather</string>
+    <string name="precipitation">Precipitation</string>
+    <string name="weather_summary_icon">Weather Summary Icon</string>
+    <string name="hourly">Hourly</string>
+    <string name="daily">Daily</string>
+    <string name="home">Home</string>
+    <string name="embedded_station">Embedded Station</string>
+    <string name="info">Info</string>
+    <string name="resources">Resources</string>
+    <string name="my_name">Kyle Dahn</string>
+    <string name="my_major">Computer Science</string>
+    <string name="school_year">Minnesota State University\nMoorhead\n2019</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="kotlin_text">Kotlin is a new programming language designed and developed by Jetbrains and open-source contributors. Kotlin is the language used to develop this application.</string>
+    <string name="degree">°</string>
+    <string name="a_representative_icon_for_this_forecast">A representative icon for this forecast</string>
 </resources>

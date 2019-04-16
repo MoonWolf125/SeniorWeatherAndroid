@@ -7,6 +7,10 @@
     <color name="textColorPrimary">@color/msum_black</color>
     <color name="textColorSecondary">@color/msum_white</color>
 
+    <!-- Customize the MaterialDrawerTheme here. -->
+    <color name="material_drawer_background">@color/msum_red</color>
+    <color name="material_drawer_dark_primary_icon">@color/msum_white</color>
+
     <color name="msum_white">#FFFFFF</color>
     <color name="msum_red">#A6192E</color>
     <color name="msum_grey">#776E64</color>
@@ -18,4 +22,7 @@
     <color name="msum_black">#2D2926</color>
     <color name="msum_light_grey">#C4BFB6</color>
     <color name="msum_silver">#A8A9AE</color>
+
+    <color name="opaque_msum_white">#56FFFFFF</color>
+    <color name="dark_msum_red">#851425</color>
 </resources>
