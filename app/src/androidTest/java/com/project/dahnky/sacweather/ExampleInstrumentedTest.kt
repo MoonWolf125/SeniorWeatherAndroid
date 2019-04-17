@@ -1,4 +1,4 @@
-package com.project.dahnky.seniorweatherandroid
+package com.project.dahnky.sacweather
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.project.dahnky.seniorweatherandroid", appContext.packageName)
+        assertEquals("com.project.dahnky.sacweather", appContext.packageName)
     }
 }

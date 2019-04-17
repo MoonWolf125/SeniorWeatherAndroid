@@ -1,4 +1,4 @@
-package com.project.dahnky.seniorweatherandroid
+package com.project.dahnky.sacweather
 
 import org.junit.Test
 
